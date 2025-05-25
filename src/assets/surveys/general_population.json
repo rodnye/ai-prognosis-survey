@@ -1,0 +1,35 @@
+{
+  "id": "general_population",
+  "title": "Encuesta a la población general sobre la IA en medicina",
+  "questions": [
+    {
+      "id": 1,
+      "text": "¿Cree que la IA podría reemplazar a los médicos en el futuro?",
+      "options": ["Sí, completamente", "Solo en algunas áreas", "No, nunca"]
+    },
+    {
+      "id": 2,
+      "text": "¿En qué situación aceptaría ser diagnosticado por IA?",
+      "options": [
+        "Enfermedades leves (gripe, alergias)",
+        "Enfermedades graves (cáncer)",
+        "En ninguna"
+      ]
+    },
+    {
+      "id": 3,
+      "text": "¿Qué ventaja ve más importante en la IA médica?",
+      "options": ["Rapidez", "Menor costo", "Precisión"]
+    },
+    {
+      "id": 4,
+      "text": "¿Qué desventaja le preocupa más?",
+      "options": ["Falta de empatía", "Errores técnicos", "Privacidad de datos"]
+    },
+    {
+      "id": 5,
+      "text": "¿Confiaría en un tratamiento recomendado por IA sin supervisión médica?",
+      "options": ["Sí", "Solo si es simple", "No"]
+    }
+  ]
+}

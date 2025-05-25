@@ -1,0 +1,42 @@
+.formField {
+  margin: 10px;
+  position: relative;
+}
+.formField form {
+  position: relative;
+}
+.input {
+  padding: 10px 15px;
+  outline: none;
+  border: solid 1px currentColor;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+  color: #333;
+  font-size: 16px;
+  font-weight: 550;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 0 0 5px transparent;
+}
+
+.input:hover,
+.input:focus {
+  box-shadow: 0 0 0 2px #333;
+}
+
+.placeholder {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 8px 15px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.input:focus + .placeholder,
+.input:valid + .placeholder {
+  transform: translateY(-32px) translateX(-5px) scale(0.95);
+  transition: 0.3s ease-in-out;
+}

@@ -1,0 +1,35 @@
+{
+  "id": "health_professionals",
+  "title": "Encuesta a profesionales de la salud sobre la IA en medicina",
+  "questions": [
+    {
+      "id": 1,
+      "text": "¿Utiliza IA en su práctica médica actual?",
+      "options": ["Sí, frecuentemente", "Ocasionalmente", "Nunca"]
+    },
+    {
+      "id": 2,
+      "text": "¿En qué área la IA le ha sido más útil?",
+      "options": ["Diagnóstico", "Gestión de datos", "Investigación", "Ninguna"]
+    },
+    {
+      "id": 3,
+      "text": "¿Cree que la IA podría reemplazar a los médicos en su especialidad?",
+      "options": ["Sí, parcialmente", "No, nunca", "No estoy seguro"]
+    },
+    {
+      "id": 4,
+      "text": "Principal ventaja de la IA en su trabajo:",
+      "options": ["Eficiencia", "Reducción de errores", "Ahorro de tiempo"]
+    },
+    {
+      "id": 5,
+      "text": "Principal riesgo de la IA en medicina:",
+      "options": [
+        "Deshumanización",
+        "Errores no supervisados",
+        "Pérdida de empleos"
+      ]
+    }
+  ]
+}
