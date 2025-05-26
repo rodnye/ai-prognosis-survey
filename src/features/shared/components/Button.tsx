@@ -7,6 +7,7 @@ interface ButtonProps {
   disabled?: boolean;
   withRow?: boolean;
   to?: string;
+  variant?: 'default' | 'back';
 }
 
 export const Button = ({
@@ -15,6 +16,7 @@ export const Button = ({
   disabled,
   withRow,
   to: to,
+  variant = 'default',
 }: ButtonProps) => {
   const handleClick = () => {
     if (to) {
@@ -25,8 +27,18 @@ export const Button = ({
   };
 
   return (
-    <button className={styles.cta} onClick={handleClick} disabled={disabled}>
+    <button
+      className={`${styles.cta} ${variant === 'back' ? styles.back : ''}`}
+      onClick={handleClick}
+      disabled={disabled}
+    >
       <div className="flex items-center">
+        {variant === 'back' && (
+          <svg width="15px" height="10px" viewBox="0 0 13 10" className="mr-2">
+            <polyline points="5 1 1 5 5 9"></polyline>
+            <path d="M1,5 L11,5"></path>
+          </svg>
+        )}
         <span>{children}</span>
         {withRow && (
           <svg

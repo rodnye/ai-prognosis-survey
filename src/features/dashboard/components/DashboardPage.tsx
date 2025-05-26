@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { Button } from '../../shared/components/Button';
 
 type SurveyResults = {
   survey: {
@@ -45,6 +46,9 @@ export function DashboardPage({ surveyId }: { surveyId: string }) {
 
   return (
     <div className="flex w-full flex-col items-center">
+      <Button variant="back" onClick={() => window.history.back()}>
+        Volver
+      </Button>
       <div className="flex flex-col">
         <h1 className="mb-6 text-center text-2xl font-bold text-white">
           Estadísticas de votaciones: {data.survey.title}
