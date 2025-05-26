@@ -37,7 +37,7 @@ export function DashboardPage({ surveyId }: { surveyId: string }) {
   }, []);
 
   if (loading) {
-    return <div className="text-center">Cargando...</div>;
+    return <div className="text-center text-2xl text-white">Cargando...</div>;
   }
 
   if (!data) {
@@ -53,6 +53,9 @@ export function DashboardPage({ surveyId }: { surveyId: string }) {
         <h1 className="mb-6 text-center text-2xl font-bold text-white">
           Estadísticas de votaciones: {data.survey.title}
         </h1>
+        <p className="mb-4 text-center text-lg text-gray-300">
+          Total de participantes: {data.results[0]?.totalVotes || 0}
+        </p>
         <div className="mb-8 flex flex-wrap justify-center">
           {data.results.map((result, index) => {
             const question = data.survey.questions.find(
@@ -80,7 +83,7 @@ export function DashboardPage({ surveyId }: { surveyId: string }) {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: i * 0.2 }}
                       >
-                        <span>{i + 1 + '. ' + question?.options[i]}</span>
+                        <span>{question?.options[i]}</span>
                         <div className="flex items-center">
                           <div className="h-6 w-3/4 overflow-hidden rounded-full bg-gray-200">
                             <motion.div

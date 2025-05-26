@@ -13,8 +13,8 @@ type PaginatorProps = {
 
 export const Paginator = ({ survey, onFinish }: PaginatorProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
   const [votes, setVotes] = useState<UserVote[]>([]);
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     setVotes(
@@ -28,16 +28,15 @@ export const Paginator = ({ survey, onFinish }: PaginatorProps) => {
 
   const handleNext = () => {
     if (currentIndex < survey.questions.length - 1) {
-      setDirection(1);
       setCurrentIndex((prev) => prev + 1);
     } else {
+      setSubmitting(true);
       onFinish(votes);
     }
   };
 
   const handlePrevious = () => {
     if (currentIndex > 0) {
-      setDirection(-1);
       setCurrentIndex((prev) => prev - 1);
     }
   };
@@ -98,12 +97,15 @@ export const Paginator = ({ survey, onFinish }: PaginatorProps) => {
               />
             </div>
             <div className="flex w-full justify-between">
-              <Button onClick={handlePrevious} disabled={currentIndex === 0}>
+              <Button
+                onClick={handlePrevious}
+                disabled={submitting || currentIndex === 0}
+              >
                 Atrás
               </Button>
               <Button
                 onClick={handleNext}
-                disabled={votes[currentIndex]?.option === 0}
+                disabled={submitting || votes[currentIndex]?.option === 0}
                 withRow
               >
                 {currentIndex === survey.questions.length - 1
