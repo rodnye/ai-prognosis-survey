@@ -1,4 +1,4 @@
-import React, { FC, ButtonHTMLAttributes } from 'react';
+'use client';
 import styles from './Button.module.css';
 
 interface ButtonProps {
@@ -6,6 +6,7 @@ interface ButtonProps {
   onClick?: () => void;
   disabled?: boolean;
   withRow?: boolean;
+  to?: string;
 }
 
 export const Button = ({
@@ -13,9 +14,18 @@ export const Button = ({
   onClick,
   disabled,
   withRow,
+  to: to,
 }: ButtonProps) => {
+  const handleClick = () => {
+    if (to) {
+      window.location.href = to;
+    } else if (onClick) {
+      onClick();
+    }
+  };
+
   return (
-    <button className={styles.cta} onClick={onClick} disabled={disabled}>
+    <button className={styles.cta} onClick={handleClick} disabled={disabled}>
       <div className="flex items-center">
         <span>{children}</span>
         {withRow && (

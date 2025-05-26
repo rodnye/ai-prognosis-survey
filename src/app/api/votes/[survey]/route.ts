@@ -7,7 +7,7 @@ import { z } from 'zod';
 import { updateUserSurvey } from '@/features/survey/services/user-storage';
 
 export const GET = withMiddlewares(
-  [authValidator(), surveyValidator()],
+  [authValidator(), surveyValidator({ skipCompletionCheck: true })],
   async (req) => {
     const user = req.data.user as User;
     return NextResponse.json({

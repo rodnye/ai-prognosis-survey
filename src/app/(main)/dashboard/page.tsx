@@ -1,17 +1,39 @@
-import { cookies } from 'next/headers';
+'use client';
 
-export default async function DashboardPage() {
-  const cookiesStore = await cookies();
+import { useState, useEffect } from 'react';
+import { TextField } from '@/features/shared/components/TextField';
+import { Button } from '@/features/shared/components/Button';
+import { NotebookCard } from '@/features/shared/components/Card';
 
-  if (cookiesStore.get('admin-session')?.value !== process.env.PASS) {
-    return;
-  }
+export default function DashboardPage() {
+  const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    const savedPassword = localStorage.getItem('dashboard-password');
+    if (savedPassword) {
+      setPassword(savedPassword);
+    }
+  }, []);
+
+  const handleSubmit = () => {
+    if (password) {
+      localStorage.setItem('dashboard-password', password);
+      window.location.href = `/dashboard/${password}`;
+    }
+  };
 
   return (
-    <div className="flex w-full flex-col items-center">
-      <div className="flex max-w-xl flex-col">
-        <h1 className="text-xl font-bold"> Estadísticas de votaciones </h1>
-      </div>
+    <div className="flex h-screen flex-col items-center justify-center">
+      <NotebookCard>
+        <TextField
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Escriba la contraseña"
+        />
+        <Button disabled={!password} onClick={handleSubmit}>
+          Aceptar
+        </Button>
+      </NotebookCard>
     </div>
   );
 }
